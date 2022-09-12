@@ -10,7 +10,9 @@ dp = Dispatcher(bot)
 @dp.message_handler(text=['Привет', 'Начать'])
 @dp.message_handler(commands='start')
 async def answer_start_command(message: types.Message):
-    await message.answer(text=f'Привет!'
+    # print(message['from']['first_name'])
+    # print(message.from_user.first_name)
+    await message.answer(text=f'Привет, {message.from_user.first_name}!'
                               f'\nРад тебя видеть!')
 
 @dp.message_handler(text=['Редис', 'Помидоры'])
