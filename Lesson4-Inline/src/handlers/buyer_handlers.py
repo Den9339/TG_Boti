@@ -32,12 +32,12 @@ async def answer_item_command(message: types.Message):
     photo = InputFile(path_or_bytesio= photo_path)
     await message.answer_photo(photo = photo,
                                caption = item_text,
-                               reply_markup=get_item_inline_keyboard)
+                               reply_markup=get_item_inline_keyboard())
 
 
 @dp.callback_query_handler(navigation_items_callback.filter(for_data='items'))
 async def see_new_item(call: types.CallbackQuery):
-    print(call.data)
+    # print(call.data)
     current_item_id = int(call.data.split(':')[-1])
     first_item_info = db.select_item(id=current_item_id)
     first_item_info = first_item_info[0]

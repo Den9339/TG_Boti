@@ -92,7 +92,7 @@ class Database:
     def select_item(self, **kwargs) -> list:
         sql = 'SELECT * FROM Items WHERE '
         sql, parameters = self.format_args(sql, kwargs)
-        return self.execute(sql, parameters, fetchone=True)
+        return self.execute(sql, parameters, fetchall=True)
 
     def select_all_items(self) -> list:
         sql = 'SELECT * FROM Items'
