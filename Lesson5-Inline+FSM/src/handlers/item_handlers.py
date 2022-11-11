@@ -5,7 +5,7 @@ from loader import dp, db, bot
 from keyboards import navigation_items_callback, item_count_callback, get_item_inline_keyboard
 
 
-@dp.message_handler(text=['Ассортимент'])
+@dp.message_handler(text=['Ассортимент', 'Список товаров'])
 @dp.message_handler(commands='item')
 async def answer_item_command(message: types.Message):
     first_item_info = db.select_item(id = 1)
@@ -35,7 +35,7 @@ async def see_new_item(call: types.CallbackQuery):
                                 reply_markup=get_item_inline_keyboard(id=current_item_id))
 
 
-@dp.callback_query_handler(item_count_callback.filter(for_data='item_plus'))
+@dp.callback_query_handler(item_count_callback.filter(target='item_plus'))
 async def plus_item(call: types.CallbackQuery):
     current_count = int(call.data.split(':')[-1])
     current_item_id = int(call.data.split(':')[-2])
@@ -54,7 +54,7 @@ async def plus_item(call: types.CallbackQuery):
                                 reply_markup=get_item_inline_keyboard(id=current_item_id,
                                                                         current_count=current_count))
 
-@dp.callback_query_handler(item_count_callback.filter(for_data='item_minus'))
+@dp.callback_query_handler(item_count_callback.filter(target='item_minus'))
 async def minus_item(call: types.CallbackQuery):
     current_count = int(call.data.split(':')[-1])
     current_item_id = int(call.data.split(':')[-2])
@@ -73,7 +73,7 @@ async def minus_item(call: types.CallbackQuery):
                                 reply_markup=get_item_inline_keyboard(id=current_item_id,
                                                                         current_count=current_count))
 
-@dp.callback_query_handler(item_count_callback.filter(for_data='basket'))
+@dp.callback_query_handler(item_count_callback.filter(target='basket'))
 async def add_item_basket(call: types.CallbackQuery):
     current_count = int(call.data.split(':')[-1])
     current_item_id = int(call.data.split(':')[-2])

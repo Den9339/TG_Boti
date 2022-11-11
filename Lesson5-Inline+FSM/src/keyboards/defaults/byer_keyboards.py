@@ -3,15 +3,15 @@ from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 commands_dafault_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text='/start'),
-            KeyboardButton(text='/item')
+            KeyboardButton(text=f'Список товаров'),
+            KeyboardButton(text=f'Корзина')
         ],
         [
-            KeyboardButton(text=f'/help'),
-            KeyboardButton(text='/info')
+            KeyboardButton(text=f'Помощь'),
+            KeyboardButton(text=f'Иформация о компании')
         ],
         [
-            KeyboardButton(text=f'Поделиться контактом',
+            KeyboardButton(text=f'Активация аккаунта',
                                 request_contact=True),
             KeyboardButton(text=f'Поделиться геолокацией',
                                 request_location=True)
@@ -37,10 +37,6 @@ info_default_keyboard = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='График работы'),
             KeyboardButton(text='Контакты')
-        ],
-        [
-            KeyboardButton(text='О нас'),
-            KeyboardButton(text='О боте')
         ],
         [
             KeyboardButton(text='В общее меню команд')

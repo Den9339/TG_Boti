@@ -23,3 +23,5 @@ from pathlib import Path
 # print(db.get_items_count())
 # print(db.drop_all_items())
 
+# print(db.select_all_basket())
+

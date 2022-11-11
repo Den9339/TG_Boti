@@ -34,17 +34,7 @@ def get_item_inline_keyboard(id: int = 1, current_count: int = 1) -> InlineKeybo
                                    )
         item_inline_keyboard.row(btm_left, btm_right)
 
-    # btm_buy = InlineKeyboardButton(text='Купить',
-    #                             callback_data=navigation_items_callback.new(
-    #                             for_data = 'items',
-    #                             id = id)
-    #                             )
-    # btm_basket = InlineKeyboardButton(text='Корзина',
-    #                             callback_data=navigation_items_callback.new(
-    #                             for_data = 'items',
-    #                             id = id)
-    #                             )
-    # item_inline_keyboard.row(btm_buy, btm_basket)
+
     item_inline_keyboard.row(InlineKeyboardButton(text='-',
                                                    callback_data=item_count_callback.new(
                                                     target='item_minus',
