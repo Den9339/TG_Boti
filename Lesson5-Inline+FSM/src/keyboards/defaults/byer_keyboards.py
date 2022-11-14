@@ -17,6 +17,9 @@ commands_dafault_keyboard = ReplyKeyboardMarkup(
                                 request_location=True)
         ],
         [
+            KeyboardButton(text=f'Анкетирование')  
+        ],
+        [
             KeyboardButton(text=f'Скрыть клавиатуру')  
         ]
     ], 

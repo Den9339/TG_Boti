@@ -1,5 +1,5 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from .callback_data import navigation_items_callback, item_count_callback, basket_callback
+from .callback_data import navigation_items_callback, item_count_callback, basket_callback, anket_callback
 from loader import db
 
 
@@ -78,5 +78,21 @@ basket_keyboard = InlineKeyboardMarkup(
                                     action='buy'
                                 ))
         ]
+    ]
+)
+anket_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text='Да',
+                                callback_data=anket_callback.new(
+                                    action_anket='fill_anket'
+                                ))
+        ],
+        [
+            InlineKeyboardButton(text='Нет',
+                                callback_data=anket_callback.new(
+                                    action_anket='del_anket'
+                                ))
+        ],
     ]
 )

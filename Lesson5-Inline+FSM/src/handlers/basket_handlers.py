@@ -6,8 +6,8 @@ from states import BuyerState
 from keyboards import basket_callback, basket_keyboard, commands_dafault_keyboard
 
 
-@dp.message_handler(text=['Корзина'])
-@dp.message_handler(commands='basket')
+@dp.message_handler(text='Корзина')
+@dp.message_handler(commands=['basket'])
 async def show_basket(message: Message):
     user_basket = db.select_user_basket(id=message.from_user.id)[1]
     text = 'В корзине нет товаров'
@@ -49,7 +49,7 @@ async def get_date(message: Message, state: FSMContext):
 
 @dp.message_handler(state=BuyerState.wait_time)
 async def get_time(message: Message, state: FSMContext):
-    await state.update_time({'time': message.text})
+    await state.update_data({'time': message.text})
     # await state.set_state() - полная очистка старых данных и запись новых
     await message.answer(text='Укажите ваше имя:')
     await BuyerState.wait_name.set()

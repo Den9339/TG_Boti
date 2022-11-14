@@ -87,7 +87,7 @@ async def add_item_basket(call: types.CallbackQuery):
             break
         else:
             user_basket += [[current_item_id, str(current_count)]]
-        user_basket = ''.join([':'.join(dbl) for dbl in user_basket])
+        user_basket = ' '.join([':'.join(dbl) for dbl in user_basket])
         db.update_basket(id=user_id, user_basket=user_basket)
         await bot.answer_callback_query(callback_query_id=call.id,
                                         text='Товар успешно добавлен.',
